@@ -70,9 +70,11 @@ export default function Checkout() {
   return (
     <div ref={ref} className="scroll-reveal relative mx-auto max-w-7xl px-4 py-10">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-4 top-16 h-6 w-6 rounded-full bg-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
-        <div className="absolute right-12 bottom-24 h-4 w-4 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1s infinite' }} />
-        <div className="absolute left-1/2 top-12 h-3 w-3 rounded-full bg-[#4dd3e0]/15" style={{ animation: 'float-slow 3.5s ease-in-out 2s infinite' }} />
+        <div className="hidden sm:block">
+          <div className="absolute -left-4 top-16 h-6 w-6 rounded-full bg-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
+          <div className="absolute right-12 bottom-24 h-4 w-4 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1s infinite' }} />
+          <div className="absolute left-1/2 top-12 h-3 w-3 rounded-full bg-[#4dd3e0]/15" style={{ animation: 'float-slow 3.5s ease-in-out 2s infinite' }} />
+        </div>
       </div>
       <h1 className="text-3xl font-bold text-[#1a3a2e] sm:text-4xl animate-fade-in-up">Finalizar Compra</h1>
 

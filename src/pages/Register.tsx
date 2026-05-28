@@ -39,9 +39,11 @@ export default function Register() {
   return (
     <div ref={ref} className="scroll-reveal relative mx-auto flex min-h-[70vh] max-w-md items-center justify-center px-4 py-10">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-6 top-20 h-8 w-8 rounded-full border-2 border-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
-        <div className="absolute right-4 bottom-20 h-5 w-5 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
-        <div className="absolute left-2/3 top-12 h-3 w-3 rounded-full bg-[#4dd3e0]/15" style={{ animation: 'float-slow 3.5s ease-in-out 2s infinite' }} />
+        <div className="hidden sm:block">
+          <div className="absolute -left-6 top-20 h-8 w-8 rounded-full border-2 border-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
+          <div className="absolute right-4 bottom-20 h-5 w-5 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
+          <div className="absolute left-2/3 top-12 h-3 w-3 rounded-full bg-[#4dd3e0]/15" style={{ animation: 'float-slow 3.5s ease-in-out 2s infinite' }} />
+        </div>
       </div>
       <div className="w-full rounded-2xl bg-white p-8 shadow-sm animate-fade-in-up">
         <div className="mb-8 text-center">

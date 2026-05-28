@@ -27,8 +27,10 @@ export default function SearchResults() {
   return (
     <div className="relative mx-auto max-w-7xl px-4 py-10">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-4 top-20 h-6 w-6 rounded-full bg-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
-        <div className="absolute right-8 top-16 h-4 w-4 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
+        <div className="hidden sm:block">
+          <div className="absolute -left-4 top-20 h-6 w-6 rounded-full bg-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
+          <div className="absolute right-8 top-16 h-4 w-4 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
+        </div>
       </div>
 
       <Link to="/catalogo" className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-[#26c6da]">

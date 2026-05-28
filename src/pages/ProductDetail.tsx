@@ -59,9 +59,11 @@ export default function ProductDetail() {
   return (
     <div className="relative mx-auto max-w-7xl px-4 py-10">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute right-12 top-24 h-8 w-8 rounded-full border-2 border-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
-        <div className="absolute left-8 bottom-24 h-5 w-5 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
-        <div className="absolute right-1/4 top-1/2 h-4 w-4 rounded-full bg-[#4dd3e0]/12" style={{ animation: 'float-slow 6s ease-in-out 0.8s infinite' }} />
+        <div className="hidden sm:block">
+          <div className="absolute right-12 top-24 h-8 w-8 rounded-full border-2 border-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
+          <div className="absolute left-8 bottom-24 h-5 w-5 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
+          <div className="absolute right-1/4 top-1/2 h-4 w-4 rounded-full bg-[#4dd3e0]/12" style={{ animation: 'float-slow 6s ease-in-out 0.8s infinite' }} />
+        </div>
       </div>
 
       <Link

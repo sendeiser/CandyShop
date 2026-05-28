@@ -136,35 +136,35 @@ export default function Navbar() {
               </div>
             </form>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
                   onClick={() => setIsOpen(false)}
-                  className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors"
+                  className="flex min-h-[44px] items-center px-4 text-sm font-medium text-gray-600 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors"
                 >
                   {link.label}
                 </Link>
               ))}
               {user ? (
                 <>
-                  <div className="px-3 py-2 text-sm text-gray-500 flex items-center gap-2">
-                    <User className="w-4 h-4" />
-                    {user.name ?? user.email}
+                  <div className="flex min-h-[44px] items-center gap-2 px-4 text-sm text-gray-500">
+                    <User className="w-4 h-4 shrink-0" />
+                    <span className="truncate">{user.name ?? user.email}</span>
                   </div>
-                  <button onClick={() => { signOut(); setIsOpen(false) }} className="px-3 py-2 text-sm font-medium text-red-500 hover:bg-red-50 rounded-lg transition-colors text-left">
+                  <button onClick={() => { signOut(); setIsOpen(false) }} className="flex min-h-[44px] items-center px-4 text-sm font-medium text-red-500 hover:bg-red-50 rounded-lg transition-colors w-full text-left">
                     Cerrar sesión
                   </button>
                 </>
               ) : (
-                <Link to="/auth/login" onClick={() => setIsOpen(false)} className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors">
+                <Link to="/auth/login" onClick={() => setIsOpen(false)} className="flex min-h-[44px] items-center px-4 text-sm font-medium text-gray-600 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors">
                   Ingresar
                 </Link>
               )}
               {isAdmin && (
-                <Link to="/admin" onClick={() => setIsOpen(false)} className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-400 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors">
-                  <Shield className="w-4 h-4" />
+                <Link to="/admin" onClick={() => setIsOpen(false)} className="flex min-h-[44px] items-center gap-2 px-4 text-sm font-medium text-gray-400 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors">
+                  <Shield className="w-4 h-4 shrink-0" />
                   Admin
                 </Link>
               )}

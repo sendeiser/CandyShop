@@ -50,7 +50,7 @@ export default function AdminOrders() {
           <p className="text-gray-400">No hay pedidos todavía</p>
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-sm border border-[#e0d6d5] overflow-hidden">
+        <div className="bg-white rounded-xl shadow-sm border border-[#e0d6d5] overflow-x-auto">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>

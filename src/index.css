@@ -349,4 +349,56 @@
   [style*="animation-delay"] {
     animation-delay: 0s !important;
   }
+
+  [style*="animation: float"] {
+    animation: none !important;
+  }
+
+  button, a, input, select, textarea, label {
+    touch-action: manipulation;
+  }
+
+  .admin-table-wrap table {
+    display: block;
+  }
+
+  .admin-table-wrap thead {
+    display: none;
+  }
+
+  .admin-table-wrap tbody,
+  .admin-table-wrap tr,
+  .admin-table-wrap td {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-table-wrap tr {
+    padding: 12px;
+    border-bottom: 1px solid #e0d6d5;
+  }
+
+  .admin-table-wrap td {
+    padding: 4px 0;
+    border: none;
+    text-align: left;
+  }
+
+  .admin-table-wrap td::before {
+    content: attr(data-label);
+    display: inline-block;
+    font-weight: 600;
+    color: #8d6e63;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 8px;
+    min-width: 80px;
+  }
+
+  .admin-flex-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
 }

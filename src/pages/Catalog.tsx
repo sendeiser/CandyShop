@@ -25,9 +25,11 @@ export default function Catalog() {
   return (
     <div ref={ref} className="scroll-reveal relative mx-auto max-w-7xl px-4 py-10">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-4 top-20 h-6 w-6 rounded-full bg-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
-        <div className="absolute right-8 top-16 h-4 w-4 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
-        <div className="absolute left-1/3 bottom-12 h-5 w-5 rounded-full bg-[#4dd3e0]/12" style={{ animation: 'float-slow 6s ease-in-out 0.5s infinite' }} />
+        <div className="hidden sm:block">
+          <div className="absolute -left-4 top-20 h-6 w-6 rounded-full bg-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
+          <div className="absolute right-8 top-16 h-4 w-4 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
+          <div className="absolute left-1/3 bottom-12 h-5 w-5 rounded-full bg-[#4dd3e0]/12" style={{ animation: 'float-slow 6s ease-in-out 0.5s infinite' }} />
+        </div>
       </div>
       <h1 className="text-3xl font-bold text-[#1a3a2e] sm:text-4xl animate-fade-in-up">Catálogo de Gomitas</h1>
 

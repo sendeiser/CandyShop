@@ -76,56 +76,56 @@ export default function AdminProducts() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-[#1a3a2e]">Gestionar Productos</h2>
-        <button onClick={openAdd} className="flex items-center gap-1.5 bg-[#26c6da] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#1aa3b3] transition-colors">
+      <div className="flex items-start justify-between gap-3 admin-flex-header">
+        <h2 className="text-2xl font-bold text-[#1a3a2e] shrink-0">Gestionar Productos</h2>
+        <button onClick={openAdd} className="flex items-center gap-1.5 bg-[#26c6da] text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-[#1aa3b3] transition-colors shrink-0">
           <Plus size={18} /> Agregar Producto
         </button>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-[#e0d6d5] overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="bg-[#faf6f5] text-left text-[#8d6e63] font-medium">
-                <th className="px-4 py-3">Nombre</th>
-                <th className="px-4 py-3">Precio</th>
-                <th className="px-4 py-3">Categoría</th>
-                <th className="px-4 py-3">Destacado</th>
-                <th className="px-4 py-3">Estado</th>
-                <th className="px-4 py-3">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((p, i) => (
-                <tr key={p.id} className={i % 2 === 0 ? '' : 'bg-[#faf6f5]/50'}>
-                  <td className="px-4 py-3 font-medium text-[#1a3a2e]">{p.name}</td>
-                  <td className="px-4 py-3 text-[#1a3a2e]">${p.price.toLocaleString('es-AR')}</td>
-                  <td className="px-4 py-3 text-[#8d6e63]">{p.category?.name ?? '-'}</td>
-                  <td className="px-4 py-3">{p.is_featured ? <span className="text-[#26c6da]">★</span> : '-'}</td>
-                  <td className="px-4 py-3">
-                    <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium ${p.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
-                      {p.is_active ? 'Activo' : 'Inactivo'}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center gap-2">
-                      <button onClick={() => openEdit(p)} className="p-1.5 rounded hover:bg-[#faf6f5] text-[#8d6e63] hover:text-[#26c6da] transition-colors"><Pencil size={16} /></button>
-                    </div>
-                  </td>
+      <div className="bg-white rounded-xl shadow-sm border border-[#e0d6d5] overflow-hidden admin-table-wrap">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-[#faf6f5] text-left text-[#8d6e63] font-medium">
+                  <th className="px-4 py-3">Nombre</th>
+                  <th className="px-4 py-3">Precio</th>
+                  <th className="px-4 py-3">Categoria</th>
+                  <th className="px-4 py-3">Destacado</th>
+                  <th className="px-4 py-3">Estado</th>
+                  <th className="px-4 py-3">Acciones</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {products.map((p, i) => (
+                  <tr key={p.id} className={i % 2 === 0 ? '' : 'bg-[#faf6f5]/50'}>
+                    <td className="px-4 py-3 font-medium text-[#1a3a2e]" data-label="Nombre">{p.name}</td>
+                    <td className="px-4 py-3 text-[#1a3a2e]" data-label="Precio">${p.price.toLocaleString('es-AR')}</td>
+                    <td className="px-4 py-3 text-[#8d6e63]" data-label="Categoria">{p.category?.name ?? '-'}</td>
+                    <td className="px-4 py-3" data-label="Destacado">{p.is_featured ? <span className="text-[#26c6da]">★</span> : '-'}</td>
+                    <td className="px-4 py-3" data-label="Estado">
+                      <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium ${p.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500'}`}>
+                        {p.is_active ? 'Activo' : 'Inactivo'}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3" data-label="Acciones">
+                      <div className="flex items-center gap-2">
+                        <button onClick={() => openEdit(p)} className="p-2 rounded hover:bg-[#faf6f5] text-[#8d6e63] hover:text-[#26c6da] transition-colors"><Pencil size={16} /></button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
 
       {modalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-xl w-full max-w-lg p-6 max-h-[90vh] overflow-y-auto">
             <h3 className="text-lg font-semibold text-[#1a3a2e] mb-4">{editing ? 'Editar Producto' : 'Agregar Producto'}</h3>
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-sm font-medium text-[#8d6e63] mb-1">Nombre</label>
                   <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full border border-[#e0d6d5] rounded-lg px-3 py-2 text-sm text-[#1a3a2e] focus:outline-none focus:border-[#26c6da]" />
@@ -139,7 +139,7 @@ export default function AdminProducts() {
                 <label className="block text-sm font-medium text-[#8d6e63] mb-1">Descripción</label>
                 <textarea value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} rows={2} className="w-full border border-[#e0d6d5] rounded-lg px-3 py-2 text-sm text-[#1a3a2e] focus:outline-none focus:border-[#26c6da]" />
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-sm font-medium text-[#8d6e63] mb-1">Precio (en pesos)</label>
                   <input type="number" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} className="w-full border border-[#e0d6d5] rounded-lg px-3 py-2 text-sm text-[#1a3a2e] focus:outline-none focus:border-[#26c6da]" />

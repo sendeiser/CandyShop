@@ -55,21 +55,21 @@ export default function AdminCategories() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-[#1a3a2e]">Gestionar Categorías</h2>
-        <button onClick={openAdd} className="flex items-center gap-1.5 bg-[#26c6da] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#1aa3b3] transition-colors">
-          <Plus size={18} /> Agregar Categoría
+      <div className="flex items-start justify-between gap-3 admin-flex-header">
+        <h2 className="text-2xl font-bold text-[#1a3a2e] shrink-0">Gestionar Categorias</h2>
+        <button onClick={openAdd} className="flex items-center gap-1.5 bg-[#26c6da] text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-[#1aa3b3] transition-colors shrink-0">
+          <Plus size={18} /> Agregar Categoria
         </button>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-[#e0d6d5] overflow-hidden">
+      <div className="bg-white rounded-xl shadow-sm border border-[#e0d6d5] overflow-hidden admin-table-wrap">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-[#faf6f5] text-left text-[#8d6e63] font-medium">
                 <th className="px-4 py-3">Nombre</th>
                 <th className="px-4 py-3">Slug</th>
-                <th className="px-4 py-3">Descripción</th>
+                <th className="px-4 py-3">Descripcion</th>
                 <th className="px-4 py-3">Orden</th>
                 <th className="px-4 py-3">Acciones</th>
               </tr>
@@ -77,12 +77,12 @@ export default function AdminCategories() {
             <tbody>
               {categories.map((c, i) => (
                 <tr key={c.id} className={i % 2 === 0 ? '' : 'bg-[#faf6f5]/50'}>
-                  <td className="px-4 py-3 font-medium text-[#1a3a2e]">{c.name}</td>
-                  <td className="px-4 py-3 text-[#8d6e63]">{c.slug}</td>
-                  <td className="px-4 py-3 text-[#8d6e63]">{c.description ?? '-'}</td>
-                  <td className="px-4 py-3 text-[#8d6e63]">{c.sort_order}</td>
-                  <td className="px-4 py-3">
-                    <button onClick={() => openEdit(c)} className="p-1.5 rounded hover:bg-[#faf6f5] text-[#8d6e63] hover:text-[#26c6da] transition-colors"><Pencil size={16} /></button>
+                  <td className="px-4 py-3 font-medium text-[#1a3a2e]" data-label="Nombre">{c.name}</td>
+                  <td className="px-4 py-3 text-[#8d6e63]" data-label="Slug">{c.slug}</td>
+                  <td className="px-4 py-3 text-[#8d6e63]" data-label="Descripcion">{c.description ?? '-'}</td>
+                  <td className="px-4 py-3 text-[#8d6e63]" data-label="Orden">{c.sort_order}</td>
+                  <td className="px-4 py-3" data-label="Acciones">
+                    <button onClick={() => openEdit(c)} className="p-2 rounded hover:bg-[#faf6f5] text-[#8d6e63] hover:text-[#26c6da] transition-colors"><Pencil size={16} /></button>
                   </td>
                 </tr>
               ))}
@@ -93,7 +93,7 @@ export default function AdminCategories() {
 
       {modalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto">
             <h3 className="text-lg font-semibold text-[#1a3a2e] mb-4">{editing ? 'Editar Categoría' : 'Agregar Categoría'}</h3>
             <div className="space-y-4">
               <div>
