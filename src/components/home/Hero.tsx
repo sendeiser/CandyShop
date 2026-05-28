@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Package } from 'lucide-react'
-import { BlobShape, BlobShape2, DotsPattern } from '../ui/Decorations'
+import { BlobShape, BlobShape2 } from '../ui/Decorations'
 
 export default function Hero() {
   return (
@@ -11,21 +11,23 @@ export default function Hero() {
           alt=""
           className="h-full w-full object-cover object-center"
           loading="eager"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
       </div>
       <div className="pointer-events-none absolute inset-0">
-        <BlobShape className="absolute -left-20 -top-20 h-[300px] w-[300px] sm:h-[500px] sm:w-[500px] animate-blob" color="#ffffff" opacity={0.08} />
-        <BlobShape2 className="absolute -bottom-32 -right-20 h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] animate-blob-slow" color="#ec4899" opacity={0.12} />
-        <BlobShape className="absolute left-1/4 top-1/4 h-[120px] w-[120px] sm:h-[200px] sm:w-[200px] animate-blob-slow" color="#8bc34a" opacity={0.1} style={{ animationDelay: '2s' }} />
-        <BlobShape2 className="absolute right-1/4 bottom-1/3 h-[120px] w-[120px] sm:h-[180px] sm:w-[180px] animate-blob" color="#ffffff" opacity={0.06} style={{ animationDelay: '4s' }} />
-        <DotsPattern className="absolute right-0 top-0 h-full w-full opacity-60" />
+        <div className="hidden sm:block">
+          <BlobShape className="absolute -left-20 -top-20 h-[500px] w-[500px] animate-blob" color="#ffffff" opacity={0.08} />
+          <BlobShape2 className="absolute -bottom-32 -right-20 h-[600px] w-[600px] animate-blob-slow" color="#ec4899" opacity={0.12} />
+          <BlobShape className="absolute left-1/4 top-1/4 h-[200px] w-[200px] animate-blob-slow" color="#8bc34a" opacity={0.1} style={{ animationDelay: '2s' }} />
+          <BlobShape2 className="absolute right-1/4 bottom-1/3 h-[180px] w-[180px] animate-blob" color="#ffffff" opacity={0.06} style={{ animationDelay: '4s' }} />
+        </div>
       </div>
 
       <div className="relative mx-auto max-w-6xl w-full">
         <div className="max-w-2xl">
           <div className="animate-fade-in-up">
-            <span className="mb-4 inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
+            <span className="mb-4 inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-medium text-white sm:backdrop-blur-sm">
               Dulces artesanales
             </span>
           </div>

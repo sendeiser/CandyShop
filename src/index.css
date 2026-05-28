@@ -280,3 +280,73 @@
 @keyframes dash-flow {
   to { stroke-dashoffset: -200; }
 }
+
+/* ── Mobile Performance ── */
+@media (max-width: 767px) {
+  .noise::before {
+    display: none;
+  }
+
+  .animate-blob,
+  .animate-blob-slow,
+  .animate-leaf,
+  .garden-line {
+    animation: none !important;
+  }
+
+  .garden-item:hover {
+    filter: none;
+  }
+
+  .card-3d {
+    transform-style: flat;
+    perspective: none;
+  }
+
+  .card-3d:hover {
+    transform: none !important;
+  }
+
+  .card-tilt-left,
+  .card-tilt-right {
+    transform: none !important;
+  }
+
+  .card-tilt-left:hover,
+  .card-tilt-right:hover {
+    transform: none !important;
+  }
+
+  .glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .gradient-mesh,
+  .gradient-mesh-alt {
+    background: linear-gradient(135deg, #faf6f5 0%, #f5f0ef 100%);
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .shimmer {
+    animation: none;
+    background: #f0eceb;
+  }
+
+  [style*="animation-delay"] {
+    animation-delay: 0s !important;
+  }
+}

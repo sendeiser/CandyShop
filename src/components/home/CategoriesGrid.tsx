@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
-import { BlobShape, LeafShape } from '../ui/Decorations'
+import { BlobShape } from '../ui/Decorations'
 import type { Category } from '../../types'
 
 interface Props {
@@ -32,15 +32,15 @@ export default function CategoriesGrid({ categories }: Props) {
     <section ref={sectionRef} className="relative overflow-hidden bg-[#faf8f5] px-6 py-20 sm:px-12 lg:px-20">
       <div className="pointer-events-none absolute inset-0">
         <BlobShape className="absolute -right-20 -top-20 h-[400px] w-[400px] animate-blob-slow" color="#26c6da" opacity={0.06} />
-        <BlobShape className="absolute -bottom-32 -left-20 h-[350px] w-[350px] animate-blob" color="#ec4899" opacity={0.05} style={{ animationDelay: '3s' }} />
-        <LeafShape className="absolute right-[10%] top-[15%] h-24 w-16 animate-leaf" color="#8bc34a" opacity={0.15} />
-        <LeafShape className="absolute bottom-[20%] left-[8%] h-20 w-14 animate-leaf" color="#8bc34a" opacity={0.12} style={{ animationDelay: '1.5s' }} />
-        <svg className="absolute inset-0 h-full w-full opacity-[0.04]" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-          <pattern id="garden-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-            <circle cx="20" cy="20" r="2" fill="#1a3a2e" />
-          </pattern>
-          <rect width="100%" height="100%" fill="url(#garden-dots)" />
-        </svg>
+        <div className="hidden sm:block">
+          <BlobShape className="absolute -bottom-32 -left-20 h-[350px] w-[350px] animate-blob" color="#ec4899" opacity={0.05} style={{ animationDelay: '3s' }} />
+          <svg className="absolute inset-0 h-full w-full opacity-[0.04]" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+            <pattern id="garden-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <circle cx="20" cy="20" r="2" fill="#1a3a2e" />
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#garden-dots)" />
+          </svg>
+        </div>
       </div>
 
       <div className="relative mx-auto max-w-6xl">
@@ -71,9 +71,9 @@ export default function CategoriesGrid({ categories }: Props) {
                 style={{ top: pos.top, left: pos.left, animation: `fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${pos.delay} both` }}
               >
                 <div className={`${pos.size} flex flex-col items-center justify-center rounded-full bg-gradient-to-br ${gradients[i % gradients.length]} p-1 shadow-lg transition-all duration-300 hover:scale-110`}>
-                  <div className="flex h-full w-full flex-col items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+                  <div className="flex h-full w-full flex-col items-center justify-center rounded-full bg-white/20 sm:backdrop-blur-sm">
                     {cat.image_url ? (
-                      <img src={cat.image_url} alt={cat.name} className="h-3/5 w-3/5 rounded-full object-cover" />
+                      <img src={cat.image_url} alt={cat.name} className="h-3/5 w-3/5 rounded-full object-cover" loading="lazy" decoding="async" />
                     ) : (
                       <span className="text-2xl font-bold text-white/70">{cat.name.charAt(0)}</span>
                     )}
@@ -92,11 +92,11 @@ export default function CategoriesGrid({ categories }: Props) {
             <Link
               key={cat.id}
               to={`/${cat.slug}`}
-              className="card-3d flex flex-col items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition-all"
+              className="flex flex-col items-center gap-3 rounded-2xl bg-white p-4 shadow-sm"
             >
               {cat.image_url ? (
                 <div className="h-20 w-20 overflow-hidden rounded-full">
-                  <img src={cat.image_url} alt={cat.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                  <img src={cat.image_url} alt={cat.name} className="h-full w-full object-cover" loading="lazy" decoding="async" />
                 </div>
               ) : (
                 <div className={`flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br ${gradients[i % gradients.length]}`}>

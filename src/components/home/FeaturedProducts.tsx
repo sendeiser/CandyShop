@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { Plus } from 'lucide-react'
 import { useCart } from '../../contexts/CartContext'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
-import { BlobShape, DotsPattern } from '../ui/Decorations'
 import type { Product } from '../../types'
 
 interface Props {
@@ -19,13 +18,12 @@ export default function FeaturedProducts({ products }: Props) {
   return (
     <section ref={sectionRef} className="relative overflow-hidden gradient-mesh px-6 py-16 sm:px-12 lg:px-20 reveal">
       <div className="pointer-events-none absolute inset-0">
-        <BlobShape className="absolute -left-32 top-1/4 h-[400px] w-[400px] animate-blob" color="#26c6da" opacity={0.08} />
-        <BlobShape className="absolute -right-24 -bottom-16 h-[350px] w-[350px] animate-blob-slow" color="#ec4899" opacity={0.06} style={{ animationDelay: '3s' }} />
-        <DotsPattern className="absolute bottom-0 left-0 h-1/2 w-full opacity-30" />
-        <div className="absolute right-12 top-10 h-10 w-10 rounded-full border-2 border-[#26c6da]/20" style={{ animation: 'float-slow 6s ease-in-out 0s infinite' }} />
-        <div className="absolute left-12 bottom-16 h-6 w-6 rounded-xl bg-[#ec4899]/15 -rotate-12" style={{ animation: 'float-slow 5s ease-in-out 1.5s infinite' }} />
-        <div className="absolute right-1/3 top-8 h-4 w-4 rounded-full bg-[#8bc34a]/20" style={{ animation: 'float-slow 4s ease-in-out 0.8s infinite' }} />
-        <div className="absolute left-1/4 top-1/3 h-3 w-3 rounded-full bg-[#26c6da]/15" style={{ animation: 'float-slow 3.5s ease-in-out 2.5s infinite' }} />
+        <div className="hidden sm:block">
+          <div className="absolute right-12 top-10 h-10 w-10 rounded-full border-2 border-[#26c6da]/20" style={{ animation: 'float-slow 6s ease-in-out 0s infinite' }} />
+          <div className="absolute left-12 bottom-16 h-6 w-6 rounded-xl bg-[#ec4899]/15 -rotate-12" style={{ animation: 'float-slow 5s ease-in-out 1.5s infinite' }} />
+          <div className="absolute right-1/3 top-8 h-4 w-4 rounded-full bg-[#8bc34a]/20" style={{ animation: 'float-slow 4s ease-in-out 0.8s infinite' }} />
+          <div className="absolute left-1/4 top-1/3 h-3 w-3 rounded-full bg-[#26c6da]/15" style={{ animation: 'float-slow 3.5s ease-in-out 2.5s infinite' }} />
+        </div>
       </div>
 
       <div className="relative mx-auto max-w-6xl">
@@ -43,14 +41,14 @@ export default function FeaturedProducts({ products }: Props) {
               return (
                 <div
                   key={product.id}
-                  className={`group card-3d rounded-2xl bg-white shadow-sm ${i % 2 === 0 ? 'card-tilt-right mt-2' : 'card-tilt-left -mt-1'}`}
+                  className={`group rounded-2xl bg-white shadow-sm ${i % 2 === 0 ? 'sm:card-tilt-right sm:mt-2' : 'sm:card-tilt-left sm:-mt-1'}`}
                   style={{ animation: `fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${0.1 * (i + 1)}s both` }}
                 >
                   <div className="relative overflow-hidden rounded-t-2xl">
                     <Link to={`/producto/${product.slug}`}>
                       {product.image_url ? (
                         <div className="h-52 overflow-hidden">
-                          <img src={product.image_url} alt={product.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                          <img src={product.image_url} alt={product.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" decoding="async" />
                         </div>
                       ) : (
                         <div className={`flex h-52 items-center justify-center bg-gradient-to-br ${gradients[i % gradients.length]}`}>
@@ -58,7 +56,7 @@ export default function FeaturedProducts({ products }: Props) {
                         </div>
                       )}
                     </Link>
-                    <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#ec4899] shadow-sm backdrop-blur-sm">
+                    <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#ec4899] shadow-sm">
                       {badge}
                     </span>
                   </div>
