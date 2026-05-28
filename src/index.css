@@ -1,0 +1,282 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "DM Serif Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+  --color-turquoise: #26c6da;
+  --color-turquoise-dark: #1aa3b3;
+  --color-turquoise-light: #4dd3e0;
+  --color-lime: #8bc34a;
+  --color-forest: #1a3a2e;
+  --color-forest-light: #2d4a3e;
+  --color-brown: #8d6e63;
+  --color-pink: #ec4899;
+  --color-pink-light: #f472b6;
+  --color-pink-dark: #db2777;
+  --color-cream: #faf6f5;
+  --color-cream-border: #e0d6d5;
+}
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #e0d6d5 transparent;
+  }
+
+  body {
+    font-family: "DM Sans", sans-serif;
+    color: #1a3a2e;
+    background: #ffffff;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "DM Serif Display", serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ── Noise Texture ── */
+.noise::before {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+/* ── Keyframes ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-14px) rotate(calc(var(--r, 0deg) + 2deg)); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(2deg); }
+  66% { transform: translateY(-4px) rotate(-1deg); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Utility Classes ── */
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out both;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Scroll Reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Shimmer / Skeleton ── */
+.shimmer {
+  background: linear-gradient(90deg, #faf6f5 25%, #f5f0ef 50%, #faf6f5 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ── Card 3D Hover ── */
+.card-3d {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+.card-3d:hover {
+  transform: perspective(800px) rotateY(2deg) rotateX(-1deg);
+  box-shadow: 0 20px 40px -12px rgba(26, 58, 46, 0.12),
+              0 8px 24px -6px rgba(26, 58, 46, 0.08);
+}
+
+/* ── Glass ── */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── Diagonals / Clip-path ── */
+.skew-section {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
+  margin-bottom: -1px;
+}
+
+.skew-section-alt {
+  clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+  margin-bottom: -1px;
+}
+
+/* ── Gradient Mesh ── */
+.gradient-mesh {
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 20%, rgba(38, 198, 218, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(139, 195, 74, 0.08) 0%, transparent 50%);
+}
+
+.gradient-mesh-alt {
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 10%, rgba(236, 72, 153, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(38, 198, 218, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(139, 195, 74, 0.08) 0%, transparent 50%);
+}
+
+/* ── Organic card stagger ── */
+.card-tilt-left {
+  transform: rotate(-1deg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-tilt-right {
+  transform: rotate(1deg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-tilt-left:hover,
+.card-tilt-right:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* ── Staggered entrance directions ── */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Blob float ── */
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(10px, -15px) rotate(3deg) scale(1.02); }
+  50% { transform: translate(-5px, -8px) rotate(-2deg) scale(0.98); }
+  75% { transform: translate(8px, -12px) rotate(2deg) scale(1.01); }
+}
+
+@keyframes blob-float-slow {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(-8px, -12px) rotate(-3deg); }
+  66% { transform: translate(6px, -6px) rotate(2deg); }
+}
+
+@keyframes leaf-sway {
+  0%, 100% { transform: rotate(-5deg) scale(1); }
+  50% { transform: rotate(5deg) scale(1.05); }
+}
+
+.animate-blob {
+  animation: blob-float 8s ease-in-out infinite;
+}
+
+.animate-blob-slow {
+  animation: blob-float-slow 10s ease-in-out infinite;
+}
+
+.animate-leaf {
+  animation: leaf-sway 4s ease-in-out infinite;
+}
+
+/* ── Category garden ── */
+.garden-item {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.garden-item:hover {
+  z-index: 10;
+  filter: drop-shadow(0 8px 24px rgba(38, 198, 218, 0.2));
+}
+
+.garden-line {
+  stroke-dasharray: 6 4;
+  animation: dash-flow 20s linear infinite;
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -200; }
+}
