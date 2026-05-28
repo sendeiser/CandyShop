@@ -48,7 +48,7 @@ export default function ProductDetail() {
     return (
       <div className="mx-auto max-w-7xl px-4 py-20 text-center">
         <p className="text-lg text-gray-500">Producto no encontrado</p>
-        <Link to="/catalogo" className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#26c6da] hover:underline">
+        <Link to="/catalogo" className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-candy hover:underline">
           <ArrowLeft className="h-4 w-4" />
           Volver al catálogo
         </Link>
@@ -60,22 +60,22 @@ export default function ProductDetail() {
     <div className="relative mx-auto max-w-7xl px-4 py-10">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="hidden sm:block">
-          <div className="absolute right-12 top-24 h-8 w-8 rounded-full border-2 border-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
-          <div className="absolute left-8 bottom-24 h-5 w-5 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
-          <div className="absolute right-1/4 top-1/2 h-4 w-4 rounded-full bg-[#4dd3e0]/12" style={{ animation: 'float-slow 6s ease-in-out 0.8s infinite' }} />
+          <div className="absolute right-12 top-24 h-8 w-8 rounded-full border-2 border-candy/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
+          <div className="absolute left-8 bottom-24 h-5 w-5 rounded-lg bg-mint/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
+          <div className="absolute right-1/4 top-1/2 h-4 w-4 rounded-full bg-cotton/12" style={{ animation: 'float-slow 6s ease-in-out 0.8s infinite' }} />
         </div>
       </div>
 
       <Link
         to="/catalogo"
-        className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-[#26c6da] transition-colors"
+        className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-candy transition-colors"
       >
         <ArrowLeft className="h-4 w-4" />
         Volver al catálogo
       </Link>
 
       <div className="grid gap-10 lg:grid-cols-2">
-        <div className="flex h-96 items-center justify-center rounded-2xl bg-[#faf6f5] shadow-sm">
+        <div className="flex h-96 items-center justify-center rounded-2xl bg-vanilla shadow-sm">
           {product.image_url ? (
             <img src={product.image_url} alt={product.name} className="h-full w-full rounded-2xl object-cover" />
           ) : (
@@ -87,12 +87,12 @@ export default function ProductDetail() {
 
         <div>
           {product.category && (
-            <span className="inline-block rounded-full bg-pink-50 px-3 py-1 text-xs font-semibold text-[#26c6da]">
+            <span className="inline-block rounded-full bg-pink-50 px-3 py-1 text-xs font-semibold text-candy">
               {product.category.name}
             </span>
           )}
 
-          <h1 className="mt-3 text-3xl font-bold text-[#1a3a2e] sm:text-4xl">
+          <h1 className="mt-3 text-3xl font-bold text-chocolate sm:text-4xl">
             {product.name}
           </h1>
 
@@ -101,7 +101,7 @@ export default function ProductDetail() {
           </p>
 
           {selectedWeight && (
-            <p className="mt-6 text-3xl font-bold text-[#26c6da]">
+            <p className="mt-6 text-3xl font-bold text-candy">
               ${selectedWeight.price.toLocaleString('es-AR')}
             </p>
           )}
@@ -130,7 +130,7 @@ export default function ProductDetail() {
               <button
                 type="button"
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="flex h-8 w-8 items-center justify-center rounded-lg text-gray-600 transition-colors hover:bg-gray-100 hover:text-[#26c6da]"
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-gray-600 transition-colors hover:bg-gray-100 hover:text-candy"
               >
                 <Minus className="h-4 w-4" />
               </button>
@@ -140,7 +140,7 @@ export default function ProductDetail() {
               <button
                 type="button"
                 onClick={() => setQuantity(quantity + 1)}
-                className="flex h-8 w-8 items-center justify-center rounded-lg text-gray-600 transition-colors hover:bg-gray-100 hover:text-[#26c6da]"
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-gray-600 transition-colors hover:bg-gray-100 hover:text-candy"
               >
                 <Plus className="h-4 w-4" />
               </button>
@@ -150,7 +150,7 @@ export default function ProductDetail() {
           <button
             type="button"
             onClick={handleAddToCart}
-            className="mt-8 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#ec4899] py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-[#db2777] active:scale-95 sm:w-auto sm:px-12"
+            className="mt-8 flex w-full items-center justify-center gap-2 rounded-2xl bg-candy py-4 text-base font-bold text-white shadow-lg transition-colors hover:bg-candy-dark active:scale-95 sm:w-auto sm:px-12"
           >
             <ShoppingBag className="h-5 w-5" />
             Agregar al Carrito

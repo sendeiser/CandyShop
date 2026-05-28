@@ -47,8 +47,8 @@ export default function LlamaIllustration({
         <ellipse cx="100" cy="92" rx="20" ry="14" fill="#d4a97a" />
 
         {/* Eyes */}
-        <circle cx="82" cy="76" r="4" fill="#1a3a2e" />
-        <circle cx="118" cy="76" r="4" fill="#1a3a2e" />
+        <circle cx="82" cy="76" r="4" fill="#3e2723" />
+        <circle cx="118" cy="76" r="4" fill="#3e2723" />
         {/* Eye shine */}
         <circle cx="83" cy="74" r="1.5" fill="white" />
         <circle cx="119" cy="74" r="1.5" fill="white" />

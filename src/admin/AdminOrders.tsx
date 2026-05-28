@@ -43,18 +43,18 @@ export default function AdminOrders() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-[#1a3a2e]">Gestionar Pedidos</h2>
+      <h2 className="text-2xl font-bold text-chocolate">Gestionar Pedidos</h2>
 
       {orders.length === 0 ? (
-        <div className="bg-white rounded-xl shadow-sm border border-[#e0d6d5] p-10 text-center">
+        <div className="bg-white rounded-xl shadow-sm border border-bubblegum p-10 text-center">
           <p className="text-gray-400">No hay pedidos todavía</p>
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-sm border border-[#e0d6d5] overflow-x-auto">
+        <div className="bg-white rounded-xl shadow-sm border border-bubblegum overflow-x-auto">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-[#faf6f5] text-left text-[#8d6e63] font-medium">
+                <tr className="bg-vanilla text-left text-[#8d6e63] font-medium">
                   <th className="px-4 py-3 w-8"></th>
                   <th className="px-4 py-3">ID</th>
                   <th className="px-4 py-3">Items</th>
@@ -70,13 +70,13 @@ export default function AdminOrders() {
                     <td colSpan={7} className="p-0">
                       <table className="w-full">
                         <tbody>
-                          <tr className={`cursor-pointer ${i % 2 === 0 ? '' : 'bg-[#faf6f5]/50'} hover:bg-[#faf6f5] transition-colors`}>
+                          <tr className={`cursor-pointer ${i % 2 === 0 ? '' : 'bg-vanilla/50'} hover:bg-vanilla transition-colors`}>
                             <td className="px-4 py-3 w-8" onClick={() => toggleExpand(order.id)}>
                               {expanded === order.id ? <ChevronDown size={16} className="text-[#8d6e63]" /> : <ChevronRight size={16} className="text-[#8d6e63]" />}
                             </td>
-                            <td className="px-4 py-3 font-medium text-[#1a3a2e]">#{order.id.slice(0, 8)}</td>
+                            <td className="px-4 py-3 font-medium text-chocolate">#{order.id.slice(0, 8)}</td>
                             <td className="px-4 py-3 text-[#8d6e63]">{order.items?.length ?? 0} producto(s)</td>
-                            <td className="px-4 py-3 text-[#1a3a2e] font-medium">${order.total.toLocaleString('es-AR')}</td>
+                            <td className="px-4 py-3 text-chocolate font-medium">${order.total.toLocaleString('es-AR')}</td>
                             <td className="px-4 py-3 text-[#8d6e63]">{new Date(order.created_at).toLocaleDateString('es-AR')}</td>
                             <td className="px-4 py-3">
                               <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium capitalize ${statusColors[order.status]}`}>
@@ -87,7 +87,7 @@ export default function AdminOrders() {
                               {order.status !== 'delivered' && order.status !== 'cancelled' && (
                                 <button
                                   onClick={() => handleStatusChange(order.id, nextStatus[order.status] ?? order.status)}
-                                  className="text-xs text-[#26c6da] hover:underline font-medium"
+                                  className="text-xs text-candy hover:underline font-medium"
                                 >
                                   Marcar {statusLabels[nextStatus[order.status]]}
                                 </button>
@@ -95,7 +95,7 @@ export default function AdminOrders() {
                             </td>
                           </tr>
                           {expanded === order.id && (
-                            <tr className={i % 2 === 0 ? 'bg-[#faf6f5]/30' : 'bg-white'}>
+                            <tr className={i % 2 === 0 ? 'bg-vanilla/30' : 'bg-white'}>
                               <td colSpan={7} className="px-4 py-3">
                                 <div className="ml-8 space-y-2">
                                   <p className="text-xs font-medium text-[#8d6e63] uppercase tracking-wide">Detalle del pedido</p>
@@ -103,12 +103,12 @@ export default function AdminOrders() {
                                   <div className="grid gap-1.5">
                                     {order.items?.map((item, j) => (
                                       <div key={j} className="flex items-center justify-between text-sm">
-                                        <span className="text-[#1a3a2e]">{item.product_name} <span className="text-[#8d6e63]">({item.weight_label}) x{item.quantity}</span></span>
-                                        <span className="font-medium text-[#1a3a2e]">${(item.unit_price * item.quantity).toLocaleString('es-AR')}</span>
+                                        <span className="text-chocolate">{item.product_name} <span className="text-[#8d6e63]">({item.weight_label}) x{item.quantity}</span></span>
+                                        <span className="font-medium text-chocolate">${(item.unit_price * item.quantity).toLocaleString('es-AR')}</span>
                                       </div>
                                     ))}
                                   </div>
-                                  <div className="pt-2 border-t border-[#e0d6d5] flex justify-between text-sm font-semibold text-[#1a3a2e]">
+                                  <div className="pt-2 border-t border-bubblegum flex justify-between text-sm font-semibold text-chocolate">
                                     <span>Total</span>
                                     <span>${order.total.toLocaleString('es-AR')}</span>
                                   </div>

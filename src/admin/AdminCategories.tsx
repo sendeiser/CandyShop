@@ -56,17 +56,17 @@ export default function AdminCategories() {
   return (
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-3 admin-flex-header">
-        <h2 className="text-2xl font-bold text-[#1a3a2e] shrink-0">Gestionar Categorias</h2>
-        <button onClick={openAdd} className="flex items-center gap-1.5 bg-[#26c6da] text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-[#1aa3b3] transition-colors shrink-0">
+        <h2 className="text-2xl font-bold text-chocolate shrink-0">Gestionar Categorias</h2>
+        <button onClick={openAdd} className="flex items-center gap-1.5 bg-candy text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-candy-dark transition-colors shrink-0">
           <Plus size={18} /> Agregar Categoria
         </button>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-[#e0d6d5] overflow-hidden admin-table-wrap">
+      <div className="bg-white rounded-xl shadow-sm border border-bubblegum overflow-hidden admin-table-wrap">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="bg-[#faf6f5] text-left text-[#8d6e63] font-medium">
+              <tr className="bg-vanilla text-left text-[#8d6e63] font-medium">
                 <th className="px-4 py-3">Nombre</th>
                 <th className="px-4 py-3">Slug</th>
                 <th className="px-4 py-3">Descripcion</th>
@@ -76,13 +76,13 @@ export default function AdminCategories() {
             </thead>
             <tbody>
               {categories.map((c, i) => (
-                <tr key={c.id} className={i % 2 === 0 ? '' : 'bg-[#faf6f5]/50'}>
-                  <td className="px-4 py-3 font-medium text-[#1a3a2e]" data-label="Nombre">{c.name}</td>
+                <tr key={c.id} className={i % 2 === 0 ? '' : 'bg-vanilla/50'}>
+                  <td className="px-4 py-3 font-medium text-chocolate" data-label="Nombre">{c.name}</td>
                   <td className="px-4 py-3 text-[#8d6e63]" data-label="Slug">{c.slug}</td>
                   <td className="px-4 py-3 text-[#8d6e63]" data-label="Descripcion">{c.description ?? '-'}</td>
                   <td className="px-4 py-3 text-[#8d6e63]" data-label="Orden">{c.sort_order}</td>
                   <td className="px-4 py-3" data-label="Acciones">
-                    <button onClick={() => openEdit(c)} className="p-2 rounded hover:bg-[#faf6f5] text-[#8d6e63] hover:text-[#26c6da] transition-colors"><Pencil size={16} /></button>
+                    <button onClick={() => openEdit(c)} className="p-2 rounded hover:bg-vanilla text-[#8d6e63] hover:text-candy transition-colors"><Pencil size={16} /></button>
                   </td>
                 </tr>
               ))}
@@ -92,27 +92,27 @@ export default function AdminCategories() {
       </div>
 
       {modalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto">
-            <h3 className="text-lg font-semibold text-[#1a3a2e] mb-4">{editing ? 'Editar Categoría' : 'Agregar Categoría'}</h3>
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 modal-overlay" style={{ overscrollBehavior: 'contain' }}>
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto modal-content">
+            <h3 className="text-lg font-semibold text-chocolate mb-4">{editing ? 'Editar Categoría' : 'Agregar Categoría'}</h3>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-[#8d6e63] mb-1">Nombre</label>
-                <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full border border-[#e0d6d5] rounded-lg px-3 py-2 text-sm text-[#1a3a2e] focus:outline-none focus:border-[#26c6da]" />
+                <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full border border-bubblegum rounded-lg px-3 py-2 text-sm text-chocolate focus:outline-none focus:border-candy" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#8d6e63] mb-1">Slug</label>
-                <input value={form.slug} onChange={e => setForm({ ...form, slug: e.target.value })} className="w-full border border-[#e0d6d5] rounded-lg px-3 py-2 text-sm text-[#1a3a2e] focus:outline-none focus:border-[#26c6da]" />
+                <input value={form.slug} onChange={e => setForm({ ...form, slug: e.target.value })} className="w-full border border-bubblegum rounded-lg px-3 py-2 text-sm text-chocolate focus:outline-none focus:border-candy" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#8d6e63] mb-1">Descripción</label>
-                <textarea value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} rows={3} className="w-full border border-[#e0d6d5] rounded-lg px-3 py-2 text-sm text-[#1a3a2e] focus:outline-none focus:border-[#26c6da]" />
+                <textarea value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} rows={3} className="w-full border border-bubblegum rounded-lg px-3 py-2 text-sm text-chocolate focus:outline-none focus:border-candy" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#8d6e63] mb-1">Imagen</label>
                 <div className="flex gap-3 items-center">
-                  <input value={form.image_url} onChange={e => setForm({ ...form, image_url: e.target.value })} placeholder="URL de la imagen" className="flex-1 border border-[#e0d6d5] rounded-lg px-3 py-2 text-sm text-[#1a3a2e] focus:outline-none focus:border-[#26c6da]" />
-                  <label className="px-3 py-2 text-sm bg-[#faf6f5] rounded-lg cursor-pointer hover:bg-[#e0d6d5] transition-colors">
+                  <input value={form.image_url} onChange={e => setForm({ ...form, image_url: e.target.value })} placeholder="URL de la imagen" className="flex-1 border border-bubblegum rounded-lg px-3 py-2 text-sm text-chocolate focus:outline-none focus:border-candy" />
+                  <label className="px-3 py-2 text-sm bg-vanilla rounded-lg cursor-pointer hover:bg-bubblegum transition-colors">
                     {uploading ? 'Subiendo...' : 'Subir'}
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
                   </label>
@@ -120,8 +120,8 @@ export default function AdminCategories() {
               </div>
             </div>
             <div className="flex justify-end gap-3 mt-6">
-              <button onClick={() => setModalOpen(false)} className="px-4 py-2 text-sm text-[#8d6e63] hover:text-[#1a3a2e] transition-colors">Cancelar</button>
-              <button onClick={handleSave} className="px-4 py-2 text-sm bg-[#26c6da] text-white rounded-lg hover:bg-[#1aa3b3] transition-colors">Guardar</button>
+              <button onClick={() => setModalOpen(false)} className="px-4 py-2 text-sm text-[#8d6e63] hover:text-chocolate transition-colors">Cancelar</button>
+              <button onClick={handleSave} className="px-4 py-2 text-sm bg-candy text-white rounded-lg hover:bg-candy-dark transition-colors">Guardar</button>
             </div>
           </div>
         </div>

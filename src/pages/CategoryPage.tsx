@@ -29,17 +29,17 @@ export default function CategoryPage() {
   return (
     <div className="relative mx-auto max-w-7xl px-4 py-10">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-4 top-20 h-6 w-6 rounded-full bg-[#26c6da]/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
-        <div className="absolute right-8 top-16 h-4 w-4 rounded-lg bg-[#8bc34a]/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
-        <div className="absolute left-1/3 bottom-12 h-5 w-5 rounded-full bg-[#4dd3e0]/12" style={{ animation: 'float-slow 6s ease-in-out 0.5s infinite' }} />
+        <div className="absolute -left-4 top-20 h-6 w-6 rounded-full bg-candy/10" style={{ animation: 'float-slow 5s ease-in-out 0s infinite' }} />
+        <div className="absolute right-8 top-16 h-4 w-4 rounded-lg bg-mint/15 rotate-12" style={{ animation: 'float-slow 4.5s ease-in-out 1.5s infinite' }} />
+        <div className="absolute left-1/3 bottom-12 h-5 w-5 rounded-full bg-cotton/12" style={{ animation: 'float-slow 6s ease-in-out 0.5s infinite' }} />
       </div>
 
-      <Link to="/" className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-[#26c6da]">
+      <Link to="/" className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-candy">
         <ArrowLeft className="h-4 w-4" />
         Volver al inicio
       </Link>
 
-      <h1 className="text-3xl font-bold text-[#1a3a2e] sm:text-4xl animate-fade-in-up">{info?.title ?? 'Categoría'}</h1>
+      <h1 className="text-3xl font-bold text-chocolate sm:text-4xl animate-fade-in-up">{info?.title ?? 'Categoría'}</h1>
       {info?.description && (
         <p className="mt-2 text-gray-600 animate-fade-in" style={{ animationDelay: '0.2s' }}>{info.description}</p>
       )}

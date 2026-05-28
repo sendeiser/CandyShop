@@ -21,11 +21,11 @@ export default function AdminLayout() {
     if (!loading && (!user || !isAdmin)) navigate('/auth/login')
   }, [user, loading, isAdmin, navigate])
 
-  if (loading) return <div className="flex min-h-screen items-center justify-center bg-[#faf6f5]"><p className="text-gray-400">Verificando acceso...</p></div>
+  if (loading) return <div className="flex min-h-screen items-center justify-center bg-vanilla"><p className="text-gray-400">Verificando acceso...</p></div>
   if (!user || !isAdmin) return null
 
   return (
-    <div className="min-h-screen bg-[#faf6f5] flex">
+    <div className="min-h-screen bg-vanilla flex">
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
@@ -34,7 +34,7 @@ export default function AdminLayout() {
       )}
 
       <aside
-        className={`fixed top-0 left-0 z-50 h-full w-64 bg-[#1a3a2e] text-white transform transition-transform duration-200 lg:translate-x-0 lg:static lg:z-auto ${
+        className={`fixed top-0 left-0 z-50 h-full w-64 bg-chocolate text-white transform transition-transform duration-200 lg:translate-x-0 lg:static lg:z-auto ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -61,7 +61,7 @@ export default function AdminLayout() {
                 onClick={() => setSidebarOpen(false)}
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   isActive
-                    ? 'bg-[#26c6da] text-white'
+                    ? 'bg-candy text-white'
                     : 'text-white/70 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -74,19 +74,19 @@ export default function AdminLayout() {
       </aside>
 
       <div className="flex-1 flex flex-col min-h-screen">
-        <header className="bg-white border-b border-[#e0d6d5] px-4 lg:px-6 py-3 flex items-center justify-between">
+        <header className="bg-white border-b border-bubblegum px-4 lg:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
-              className="lg:hidden p-1.5 rounded hover:bg-[#faf6f5] text-[#1a3a2e]"
+              className="lg:hidden p-1.5 rounded hover:bg-vanilla text-chocolate"
               onClick={() => setSidebarOpen(true)}
             >
               <Menu size={20} />
             </button>
-            <h1 className="text-lg font-semibold text-[#1a3a2e]">Admin Panel</h1>
+            <h1 className="text-lg font-semibold text-chocolate">Admin Panel</h1>
           </div>
           <Link
             to="/"
-            className="flex items-center gap-1.5 text-sm text-[#8d6e63] hover:text-[#26c6da] transition-colors"
+            className="flex items-center gap-1.5 text-sm text-[#8d6e63] hover:text-candy transition-colors"
           >
             <ArrowLeft size={16} />
             Volver a Tienda

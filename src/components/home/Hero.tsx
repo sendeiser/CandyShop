@@ -18,8 +18,8 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0">
         <div className="hidden sm:block">
           <BlobShape className="absolute -left-20 -top-20 h-[500px] w-[500px] animate-blob" color="#ffffff" opacity={0.08} />
-          <BlobShape2 className="absolute -bottom-32 -right-20 h-[600px] w-[600px] animate-blob-slow" color="#ec4899" opacity={0.12} />
-          <BlobShape className="absolute left-1/4 top-1/4 h-[200px] w-[200px] animate-blob-slow" color="#8bc34a" opacity={0.1} style={{ animationDelay: '2s' }} />
+          <BlobShape2 className="absolute -bottom-32 -right-20 h-[600px] w-[600px] animate-blob-slow" color="#ffb3d0" opacity={0.12} />
+          <BlobShape className="absolute left-1/4 top-1/4 h-[200px] w-[200px] animate-blob-slow" color="#69f0ae" opacity={0.1} style={{ animationDelay: '2s' }} />
           <BlobShape2 className="absolute right-1/4 bottom-1/3 h-[180px] w-[180px] animate-blob" color="#ffffff" opacity={0.06} style={{ animationDelay: '4s' }} />
         </div>
       </div>
@@ -34,7 +34,7 @@ export default function Hero() {
           <h1 className="font-serif text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
             Arma tu mix perfecto
             <br />
-            <span className="text-[#fbbf24]">y recibilo en casa</span>
+            <span className="text-lemon">y recibilo en casa</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/85 sm:text-xl animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             Las gomitas mas frescas y sabrosas las armas vos. Elegi, combina y
@@ -43,14 +43,14 @@ export default function Hero() {
           <div className="mt-8 flex flex-col gap-4 sm:flex-row animate-fade-in-up" style={{ animationDelay: '0.45s' }}>
             <Link
               to="/catalogo"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-base font-semibold text-[#26c6da] shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-base font-semibold text-candy shadow-lg transition-transform transition-shadow hover:scale-105 hover:shadow-xl active:scale-95"
             >
               Ver Catalogo
               <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
               to="/catalogo"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-white/60 px-8 py-3.5 text-base font-semibold text-white transition-all hover:border-white hover:bg-white/10 active:scale-95"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-white/60 px-8 py-3.5 text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/10 active:scale-95"
             >
               <Package className="h-5 w-5" />
               Mayoristas

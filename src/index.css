@@ -1,37 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "DM Serif Display", serif;
-  --font-sans: "DM Sans", sans-serif;
-  --color-turquoise: #26c6da;
-  --color-turquoise-dark: #1aa3b3;
-  --color-turquoise-light: #4dd3e0;
-  --color-lime: #8bc34a;
-  --color-forest: #1a3a2e;
-  --color-forest-light: #2d4a3e;
-  --color-brown: #8d6e63;
-  --color-pink: #ec4899;
-  --color-pink-light: #f472b6;
-  --color-pink-dark: #db2777;
-  --color-cream: #faf6f5;
-  --color-cream-border: #e0d6d5;
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-sans: "Sora", sans-serif;
+
+  --color-candy: #ff2a75;
+  --color-candy-dark: #d91a5e;
+  --color-candy-light: #ff6b9d;
+  --color-bubblegum: #ffb3d0;
+  --color-cotton: #7ec8e3;
+  --color-cotton-dark: #4fc3f7;
+  --color-mint: #69f0ae;
+  --color-mint-dark: #33d68a;
+  --color-lemon: #fff176;
+  --color-vanilla: #fff8f0;
+  --color-vanilla-dark: #f5ede0;
+  --color-chocolate: #3e2723;
+  --color-chocolate-dark: #2d1f1b;
+  --color-caramel: #8d6e63;
+  --color-strawberry: #ff5252;
 }
 
 @layer base {
   * {
     scrollbar-width: thin;
-    scrollbar-color: #e0d6d5 transparent;
+    scrollbar-color: #ffb3d0 transparent;
   }
 
   body {
-    font-family: "DM Sans", sans-serif;
-    color: #1a3a2e;
-    background: #ffffff;
+    font-family: "Sora", sans-serif;
+    color: var(--color-chocolate);
+    background: var(--color-vanilla);
   }
 
   h1, h2, h3, h4 {
-    font-family: "DM Serif Display", serif;
-    letter-spacing: -0.01em;
+    font-family: "Bricolage Grotesque", sans-serif;
+    letter-spacing: 0.01em;
   }
 }
 
@@ -139,10 +143,31 @@
   perspective: 800px;
 }
 
-.card-3d:hover {
-  transform: perspective(800px) rotateY(2deg) rotateX(-1deg);
-  box-shadow: 0 20px 40px -12px rgba(26, 58, 46, 0.12),
-              0 8px 24px -6px rgba(26, 58, 46, 0.08);
+/* ── Card 3D + Hover guards (touch-safe) ── */
+@media (hover: hover) and (pointer: fine) {
+  .card-3d:hover {
+    transform: perspective(800px) rotateY(2deg) rotateX(-1deg);
+    box-shadow: 0 20px 40px -12px rgba(26, 58, 46, 0.12),
+                0 8px 24px -6px rgba(26, 58, 46, 0.08);
+  }
+
+  .card-tilt-left:hover,
+  .card-tilt-right:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+
+  .garden-item:hover {
+    z-index: 10;
+    filter: drop-shadow(0 8px 24px rgba(255, 42, 117, 0.2));
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
 }
 
 /* ── Glass ── */
@@ -166,16 +191,16 @@
 /* ── Gradient Mesh ── */
 .gradient-mesh {
   background:
-    radial-gradient(ellipse 80% 60% at 10% 20%, rgba(38, 198, 218, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 90% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(139, 195, 74, 0.08) 0%, transparent 50%);
+    radial-gradient(ellipse 80% 60% at 10% 20%, rgba(126, 200, 227, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 80%, rgba(255, 42, 117, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(105, 240, 174, 0.08) 0%, transparent 50%);
 }
 
 .gradient-mesh-alt {
   background:
-    radial-gradient(ellipse 70% 60% at 80% 10%, rgba(236, 72, 153, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(38, 198, 218, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(139, 195, 74, 0.08) 0%, transparent 50%);
+    radial-gradient(ellipse 70% 60% at 80% 10%, rgba(255, 42, 117, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(126, 200, 227, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(105, 240, 174, 0.08) 0%, transparent 50%);
 }
 
 /* ── Organic card stagger ── */
@@ -264,12 +289,14 @@
 
 /* ── Category garden ── */
 .garden-item {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.garden-item:hover {
-  z-index: 10;
-  filter: drop-shadow(0 8px 24px rgba(38, 198, 218, 0.2));
+@media (hover: hover) and (pointer: fine) {
+  .garden-item:hover {
+    z-index: 10;
+    filter: drop-shadow(0 8px 24px rgba(255, 42, 117, 0.2));
+  }
 }
 
 .garden-line {
@@ -279,6 +306,101 @@
 
 @keyframes dash-flow {
   to { stroke-dashoffset: -200; }
+}
+
+/* ── Modal overlay ── */
+@keyframes modal-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-content-in {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-overlay {
+  animation: modal-overlay-in 200ms ease-out both;
+}
+
+.modal-content {
+  animation: modal-content-in 250ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Candy Stripe Border ── */
+.candy-stripe-top {
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ff2a75 0px,
+    #ff2a75 12px,
+    transparent 12px,
+    transparent 16px,
+    #ffb3d0 16px,
+    #ffb3d0 28px,
+    transparent 28px,
+    transparent 32px
+  );
+}
+
+/* ── Candy Wrapper Twists ── */
+.wrapper-card {
+  position: relative;
+}
+
+.wrapper-card::before,
+.wrapper-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.wrapper-card::before {
+  top: -4px;
+  background:
+    linear-gradient(135deg, transparent 33.33%, rgba(255,255,255,0.15) 33.33%, rgba(255,255,255,0.15) 66.66%, transparent 66.66%),
+    linear-gradient(45deg, transparent 33.33%, rgba(0,0,0,0.06) 33.33%, rgba(0,0,0,0.06) 66.66%, transparent 66.66%);
+  background-size: 12px 12px;
+  transform: rotate(-2deg) scaleX(1.1);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.wrapper-card::after {
+  bottom: -4px;
+  background:
+    linear-gradient(135deg, transparent 33.33%, rgba(255,255,255,0.15) 33.33%, rgba(255,255,255,0.15) 66.66%, transparent 66.66%),
+    linear-gradient(45deg, transparent 33.33%, rgba(0,0,0,0.06) 33.33%, rgba(0,0,0,0.06) 66.66%, transparent 66.66%);
+  background-size: 12px 12px;
+  transform: rotate(2deg) scaleX(1.1);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
+@media (max-width: 767px) {
+  .wrapper-card::before,
+  .wrapper-card::after {
+    height: 10px;
+  }
+}
+
+/* ── Step Progress Bar ── */
+.step-connector {
+  flex: 1;
+  height: 3px;
+  background: #e0d6d5;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-connector.active {
+  background: #ff2a75;
+}
+
+.step-connector.partial {
+  background: linear-gradient(90deg, #ff2a75 50%, #e0d6d5 50%);
 }
 
 /* ── Mobile Performance ── */

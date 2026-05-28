@@ -31,7 +31,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       to={`/producto/${product.slug}`}
       className="card-3d block bg-white rounded-2xl shadow-sm group"
     >
-      <div className="aspect-square rounded-t-2xl overflow-hidden bg-[#faf6f5]">
+      <div className="aspect-square rounded-t-2xl overflow-hidden bg-vanilla">
         {product.image_url ? (
           <img
             src={product.image_url}
@@ -54,14 +54,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           {product.name}
         </h3>
 
-        <p className="font-bold text-lg" style={{ color: '#26c6da' }}>
+        <p className="font-bold text-lg text-candy">
           ${defaultWeight.price.toFixed(2)}
         </p>
 
         <button
           onClick={handleAdd}
-          className="mt-3 w-full flex items-center justify-center gap-1.5 py-2 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
-          style={{ backgroundColor: '#ec4899' }}
+          className="mt-3 w-full flex items-center justify-center gap-1.5 py-2 rounded-full text-sm font-semibold text-white bg-candy transition-opacity hover:opacity-90 active:scale-95"
         >
           <Plus className="w-4 h-4" />
           Agregar +

@@ -38,17 +38,17 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-[#1a3a2e]">Dashboard</h2>
+      <h2 className="text-2xl font-bold text-chocolate">Dashboard</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => {
           const Icon = stat.icon
           return (
-            <div key={stat.label} className="bg-white rounded-xl p-5 shadow-sm border border-[#e0d6d5] flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#26c6da]/10 flex items-center justify-center shrink-0">
-                <Icon className="text-[#26c6da]" size={24} />
+            <div key={stat.label} className="bg-white rounded-xl p-5 shadow-sm border border-bubblegum flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-candy/10 flex items-center justify-center shrink-0">
+                <Icon className="text-candy" size={24} />
               </div>
               <div>
-                <p className="text-2xl font-bold text-[#1a3a2e]">{stat.value}</p>
+                <p className="text-2xl font-bold text-chocolate">{stat.value}</p>
                 <p className="text-sm text-[#8d6e63]">{stat.label}</p>
               </div>
             </div>
@@ -56,15 +56,15 @@ export default function Dashboard() {
         })}
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-[#e0d6d5] p-5">
-        <h3 className="text-lg font-semibold text-[#1a3a2e] mb-4">Pedidos Recientes</h3>
+      <div className="bg-white rounded-xl shadow-sm border border-bubblegum p-5">
+        <h3 className="text-lg font-semibold text-chocolate mb-4">Pedidos Recientes</h3>
         {recentOrders.length === 0 ? (
           <p className="text-sm text-gray-400">No hay pedidos todavía</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#e0d6d5] text-left text-[#8d6e63] font-medium">
+                <tr className="border-b border-bubblegum text-left text-[#8d6e63] font-medium">
                   <th className="pb-3 pr-4">ID</th>
                   <th className="pb-3 pr-4">Total</th>
                   <th className="pb-3 pr-4">Fecha</th>
@@ -73,9 +73,9 @@ export default function Dashboard() {
               </thead>
               <tbody>
                 {recentOrders.map((order, i) => (
-                  <tr key={order.id} className={i < recentOrders.length - 1 ? 'border-b border-[#e0d6d5]' : ''}>
-                    <td className="py-3 pr-4 font-medium text-[#1a3a2e]">#{order.id.slice(0, 8)}</td>
-                    <td className="py-3 pr-4 text-[#1a3a2e] font-medium">${order.total.toLocaleString('es-AR')}</td>
+                  <tr key={order.id} className={i < recentOrders.length - 1 ? 'border-b border-bubblegum' : ''}>
+                    <td className="py-3 pr-4 font-medium text-chocolate">#{order.id.slice(0, 8)}</td>
+                    <td className="py-3 pr-4 text-chocolate font-medium">${order.total.toLocaleString('es-AR')}</td>
                     <td className="py-3 pr-4 text-[#8d6e63]">{new Date(order.created_at).toLocaleDateString('es-AR')}</td>
                     <td className="py-3">
                       <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium capitalize ${statusColors[order.status]}`}>

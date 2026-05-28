@@ -15,12 +15,11 @@ export default function WeightSelector({ options, value, onChange }: WeightSelec
           <button
             key={opt.grams}
             onClick={() => onChange(opt)}
-            className={`flex flex-col items-center px-4 py-2 rounded-full text-sm font-medium transition-all ${
+            className={`flex flex-col items-center px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               selected
-                ? 'text-white shadow-sm'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-candy text-white shadow-sm'
+                : 'bg-white text-chocolate border border-bubblegum hover:bg-candy/10'
             }`}
-            style={selected ? { backgroundColor: '#26c6da' } : undefined}
           >
             <span>{opt.label}</span>
             <span className="text-xs opacity-80">${opt.price.toFixed(2)}</span>

@@ -2,7 +2,7 @@ import { cn } from '../../lib/utils'
 
 const candyColors: Record<string, string> = {
   pink: '#ffb3c6',
-  yellow: '#8bc34a',
+  yellow: '#fff176',
   green: '#a8e6cf',
   blue: '#b3d9ff',
   purple: '#d4b3ff',
@@ -32,9 +32,9 @@ export default function CandyIllustration({
         <circle cx="50" cy="38" r="18" fill={color} />
         <circle cx="36" cy="24" r="8" fill={color} />
         <circle cx="64" cy="24" r="8" fill={color} />
-        <circle cx="43" cy="35" r="2.5" fill="#1a3a2e" />
-        <circle cx="57" cy="35" r="2.5" fill="#1a3a2e" />
-        <path d="M45 42 Q50 48 55 42" fill="none" stroke="#1a3a2e" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="43" cy="35" r="2.5" fill="#3e2723" />
+        <circle cx="57" cy="35" r="2.5" fill="#3e2723" />
+        <path d="M45 42 Q50 48 55 42" fill="none" stroke="#3e2723" strokeWidth="1.5" strokeLinecap="round" />
         <ellipse cx="26" cy="54" rx="6" ry="10" fill={color} transform="rotate(-20 26 54)" />
         <ellipse cx="74" cy="54" rx="6" ry="10" fill={color} transform="rotate(20 74 54)" />
         <ellipse cx="38" cy="82" rx="8" ry="5" fill={color} />
